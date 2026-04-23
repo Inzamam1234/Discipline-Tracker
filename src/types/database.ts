@@ -1,18 +1,9 @@
-export type Profile = {
-    id: string
-    username: string
-    full_name: string | null
-    avatar_url: string | null
-    xp: number
-    level: number
-    created_at: string
-}
-
 export type Habit = {
     id: string
     user_id: string
     name: string
     icon: string
+    color: string
     unit: string | null
     target_value: number | null
     habit_type: 'boolean' | 'numeric'
@@ -31,6 +22,16 @@ export type HabitLog = {
     logged_at: string
 }
 
+export type Profile = {
+    id: string
+    username: string
+    full_name: string | null
+    avatar_url: string | null
+    xp: number
+    level: number
+    created_at: string
+}
+
 export type Group = {
     id: string
     name: string
@@ -39,4 +40,28 @@ export type Group = {
     created_by: string
     is_active: boolean
     created_at: string
+}
+export type GroupMember = {
+    id: string
+    group_id: string
+    user_id: string
+    role: 'admin' | 'member'
+    joined_at: string
+}
+
+export type LeaderboardEntry = {
+    user_id: string
+    username: string
+    avatar_url: string | null
+    total_habits: number
+    completed_today: number
+    completion_pct: number
+    best_streak: number
+    is_you: boolean
+}
+
+export type GroupWithMeta = Group & {
+    member_count: number
+    my_role: 'admin' | 'member'
+    my_completion_today: number
 }
